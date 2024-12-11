@@ -1,6 +1,6 @@
-# Connectiva Lambda Function
+# Serverless Authentication and Verification
 
-Connectiva Lambda Function is a serverless authentication and verification system built using AWS Lambda, API Gateway, and Cognito. It provides a scalable and secure way to manage user authentication and verification for web and mobile applications.
+This project is a serverless authentication and verification system built using AWS Lambda, API Gateway, and Cognito. It provides a scalable and secure way to manage user authentication and verification for web and mobile applications.
 
 ## Features
 
@@ -12,7 +12,7 @@ Connectiva Lambda Function is a serverless authentication and verification syste
 
 ## Getting Started
 
-Follow these steps to get started with the Connectiva Lambda Function:
+Follow these steps to get started with the authentication and verification system:
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ Follow these steps to get started with the Connectiva Lambda Function:
 
 ## Usage
 
-Use the Connectiva Lambda Function by sending requests to the API Gateway endpoint with the required parameters. Below are the available API endpoints and their usage:
+Use the authentication and verification system by sending requests to the API Gateway endpoint with the required parameters. Below are the available API endpoints and their usage:
 
 ### API Endpoints
 
@@ -113,7 +113,7 @@ Use the Connectiva Lambda Function by sending requests to the API Gateway endpoi
 
 ## Dependencies
 
-Connectiva Lambda Function depends on the following AWS services:
+This system depends on the following AWS services:
 
 - **Cognito User Pool**: Manages user authentication and verification.
 - **API Gateway**: Routes requests to the Lambda function.
@@ -132,3 +132,4 @@ This function uses OTP (One-Time Password) to verify user identities. OTP is a s
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
