@@ -1,0 +1,134 @@
+# Connectiva Lambda Function
+
+Connectiva Lambda Function is a serverless authentication and verification system built using AWS Lambda, API Gateway, and Cognito. It provides a scalable and secure way to manage user authentication and verification for web and mobile applications.
+
+## Features
+
+- User authentication using Cognito User Pool
+- Verification using Cognito verification codes
+- JWT token-based authentication
+- Support for multiple authentication providers (e.g., Google, Facebook, Amazon)
+- Scalable and secure architecture using AWS Lambda and API Gateway
+
+## Getting Started
+
+Follow these steps to get started with the Connectiva Lambda Function:
+
+### Prerequisites
+
+- AWS account with AWS Lambda, API Gateway, and Cognito enabled
+- Node.js 14.x or later
+- npm 6.x or later
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/kunalpro379/AuthenticationFunction.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd AuthenticationFunction
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Configure the environment variables in `config.json`:
+
+   ```json
+   {
+       "COGNITO_USER_POOL_ID": "your_user_pool_id",
+       "COGNITO_CLIENT_ID": "your_client_id",
+       "COGNITO_CLIENT_SECRET": "your_client_secret",
+       "API_GATEWAY_ENDPOINT": "your_api_gateway_endpoint"
+   }
+   ```
+
+5. Deploy the function to AWS Lambda:
+
+   ```bash
+   aws lambda deploy
+   ```
+
+## Usage
+
+Use the Connectiva Lambda Function by sending requests to the API Gateway endpoint with the required parameters. Below are the available API endpoints and their usage:
+
+### API Endpoints
+
+- `POST /signup`: Create a new user
+- `POST /signin`: Authenticate a user
+- `POST /verify`: Verify a user's email address or phone number
+- `POST /validate`: Validate a JWT token
+
+### Request Body
+
+- **Sign-up**
+  ```json
+  {
+      "username": "example_user",
+      "password": "example_password",
+      "email": "example@example.com",
+      "phoneNumber": "+1234567890",
+      "gender": "example_gender"
+  }
+  ```
+
+- **Sign-in**
+  ```json
+  {
+      "username": "example_user",
+      "password": "example_password"
+  }
+  ```
+
+- **Verification**
+  ```json
+  {
+      "username": "example_user",
+      "code": "123456"
+  }
+  ```
+
+- **Validate**
+  ```json
+  {
+      "token": "example_jwt_token"
+  }
+  ```
+
+### Response
+
+- `200 OK`: The request was successful
+- `400 Bad Request`: The request was invalid
+- `401 Unauthorized`: The user is not authenticated
+- `500 Internal Server Error`: An error occurred on the server
+
+## Dependencies
+
+Connectiva Lambda Function depends on the following AWS services:
+
+- **Cognito User Pool**: Manages user authentication and verification.
+- **API Gateway**: Routes requests to the Lambda function.
+- **DynamoDB**: Stores user data.
+
+## OTP Verification
+
+This function uses OTP (One-Time Password) to verify user identities. OTP is a six-digit code sent to the user's email address or phone number, which must be entered within a short period to complete verification.
+
+## Security
+
+- User authentication and authorization are managed using AWS Cognito.
+- Requests are validated using JWT tokens.
+- Environment variables are securely managed in `config.json`.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
