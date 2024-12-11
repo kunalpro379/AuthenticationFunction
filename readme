@@ -1,0 +1,96 @@
+# A Serverless Authentication and Verification System
+
+==========================
+
+This Function is a serverless authentication and verification system built using AWS Lambda, API Gateway, and Cognito. It provides a scalable and secure way to manage user authentication and verification for web and mobile applications.
+
+- User authentication using Cognito User Pool
+- Verification using Cognito verification codes
+- JWT token-based authentication
+- Support for multiple authentication providers (e.g. Google, Facebook, Amazon)
+- Scalable and secure architecture using AWS Lambda and API Gateway
+
+---
+
+To get started with Connectiva Lambda Function, follow these steps:
+
+1. Clone the repository using `git clone https://github.com/kunalpro379/AuthenticationFunction.git`
+2. Install the dependencies using `npm install`
+3. Configure the environment variables in `config.json`
+4. Deploy the function to AWS Lambda using `aws lambda deploy`
+
+### Prerequisites
+
+- AWS account with AWS Lambda, API Gateway, and Cognito enabled
+- Node.js 14.x or later
+- npm 6.x or later
+
+### Environment Variables
+
+- `COGNITO_USER_POOL_ID`: The ID of the Cognito User Pool
+- `COGNITO_CLIENT_ID`: The ID of the Cognito Client
+- `COGNITO_CLIENT_SECRET`: The secret key of the Cognito Client
+- `API_GATEWAY_ENDPOINT`: The endpoint of the API Gateway
+
+## Usage
+
+---
+
+To use Connectiva Lambda Function, send a request to the API Gateway endpoint with the required parameters. For example:
+
+- Sign-up: `POST /signup` with a JSON body containing `username`, `password`, `email`, `phoneNumber`, and `gender`
+- Sign-in: `POST /signin` with a JSON body containing `username` and `password`
+- Verification: `POST /verify` with a JSON body containing `username` and `code`
+- Validate: `POST /validate` with a JSON body containing `token`
+
+### API Endpoints
+
+- `POST /signup`: Create a new user
+- `POST /signin`: Authenticate a user
+- `POST /verify`: Verify a user's email address or phone number
+- `POST /validate`: Validate a JWT token
+
+### Request Body
+
+- `username`: The username of the user
+- `password`: The password of the user
+- `email`: The email address of the user
+- `phoneNumber`: The phone number of the user
+- `gender`: The gender of the user
+- `code`: The verification code sent to the user's email address or phone number
+- `token`: The JWT token to be validated
+
+### Response
+
+- `200 OK`: The request was successful
+- `400 Bad Request`: The request was invalid
+- `401 Unauthorized`: The user is not authenticated
+- `500 Internal Server Error`: An error occurred on the server
+
+## Dependencies
+
+---
+
+Connectiva Lambda Function depends on the following AWS services:
+
+- Cognito User Pool
+- API Gateway
+- DynamoDB (for storing user data)
+
+## Cognito
+
+---
+
+this Lambda Function uses Cognito to manage user authentication and verification. Cognito is a fully managed user identity and access management service that provides a scalable and secure way to manage user identities.
+
+## OTP
+
+---
+
+this Lambda Function uses OTP (One-Time Password) to verify user identities. OTP is a six-digit code that is sent to the user's email address or phone number and must be entered within a short period of time to complete the verification process.
+
+## Security
+
+---
+
+This Function uses Cognito to authenticate and authorize users. It also uses JWT tokens to validate requests.

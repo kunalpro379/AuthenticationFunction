@@ -1,0 +1,12 @@
+{
+    "path": "/signup",
+    "body": {
+      "username": "kunalpro3379",
+      "gender": "Male",
+      "password": "Kunal@379",
+      "email": "kunaldp379@gmail.com",
+      "phoneNumber": "+919892885000",
+      "profilePic": "https://example.com/profile/testuser123.jpg",
+      "bio": "Loving life and learning every day!"
+    }
+  }
