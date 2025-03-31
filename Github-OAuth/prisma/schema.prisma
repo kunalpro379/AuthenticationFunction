@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Provider {
+  LOCAL
+  GITHUB
+  GOOGLE
+}
+
+enum UserType {
+  STUDENT
+  PROFESSIONAL
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  phoneNumber   String?   @unique
+  photo         String?   @default("default.png")
+  verified      Boolean   @default(false)
+  role          Role      @default(USER)
+  provider      Provider  @default(LOCAL)
+  userType      UserType  @default(STUDENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profile       Profile?
+  education     Education[]
+  workExperience WorkExperience[]
+
+  @@map("users")
+}
+
+model Profile {
+  id          String    @id @default(uuid())
+  bio         String?   @db.Text
+  city        String?
+  userId      String    @unique
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("profiles")
+}
+
+model Education {
+  id          String    @id @default(uuid())
+  institution String
+  degree      String?
+  field       String?
+  startYear   Int
+  endYear     Int?
+  current     Boolean   @default(false)
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("education")
+}
+
+model WorkExperience {
+  id          String    @id @default(uuid())
+  company     String
+  position    String
+  city        String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean   @default(false)
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("work_experience")
+}
